@@ -1,6 +1,6 @@
 <div {{ $attributes->merge(['class' => 'flex items-center']) }}>
   <a
-    href="https://www.facebook.com/thecodeholic"
+    href="https://www.facebook.com/developer006tz"
     target="_blank"
     class="
          w-10
@@ -37,7 +37,7 @@
     </svg>
   </a>
   <a
-    href="https://twitter.com/thecodeholic"
+    href="https://twitter.com/developer06tz"
     target="_blank"
     class="
        w-10
@@ -74,7 +74,7 @@
     </svg>
   </a>
   <a
-    href="https://youtube.com/TheCodeholic"
+    href="https://youtube.com/techtz"
     target="_blank"
     class="
        w-10
@@ -111,7 +111,7 @@
     </svg>
   </a>
   <a
-    href="https://www.instagram.com/thecodeholic"
+    href="https://www.instagram.com/tm_ludovic"
     target="_blank"
     class="
        w-10

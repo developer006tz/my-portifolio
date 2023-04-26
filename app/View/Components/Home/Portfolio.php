@@ -22,40 +22,46 @@ class Portfolio extends Component
     {
         $this->items = [
             [
-                'category' => ['Laravel', 'Tailwind.css', 'Vue3'],
+                'category' => ['Laravel', 'Tailwind.css', 'Bootstrap'],
                 'title' => 'Full Stack app with Laravel, Tailwindcss and Vue 3',
                 'image' => url('/img/survey.png'),
-                'github' => 'https://github.com/thecodeholic/laravel-vue-survey'
+                'github' => 'https://github.com/developer006tz'
             ],
             [
-                'category' => ['Yii2', 'Bootstrap'],
+                'category' => ['Tailwind.css', 'Bootstrap'],
                 'title' => 'E-commerce website with Yii2',
                 'image' => url('/img/yii2-ecommerce.jpg'),
-                'github' => 'https://github.com/thecodeholic/yii2-ecommerce-website'
+                'github' => 'https://github.com/developer006tz'
             ],
             [
-                'category' => ['PHP', 'Laravel'],
+                'category' => ['Codeigniter', 'Laravel'],
                 'title' => 'REST API with Laravel 8 and Sanctum',
                 'image' => url('/img/laravel-rest-api.png'),
-                'github' => 'https://github.com/thecodeholic/laravel-image-manipulation-rest-api'
+                'github' => 'https://github.com/developer006tz'
             ],
             [
-                'category' => ['PHP'],
+                'category' => ['Django'],
                 'title' => 'PHP MVC Framework',
                 'image' => url('/img/php-mvc-framework.png'),
-                'github' => 'https://github.com/thecodeholic/php-mvc-framework'
+                'github' => 'https://github.com/developer006tz'
             ],
             [
-                'category' => ['Yii2', 'Bootstrap'],
+                'category' => ['Logo Design', 'Fliers','Posters'],
                 'title' => 'YouTube clone with Yii2',
                 'image' => url('/img/yii2-youtube-clone.png'),
-                'github' => 'https://github.com/thecodeholic/Yii2-Youtube-Clone'
+                'github' => 'https://github.com/developer006tz'
             ],
             [
-                'category' => ['Yii2', 'VueJs'],
+                'category' => ['Fliers', 'Posters'],
                 'title' => 'Yii2 + VueJs Notes application',
                 'image' => url('/img/yii2-vue-notes.png'),
-                'github' =>  'https://github.com/thecodeholic/vue.js-yii2-notes'
+                'github' =>  'https://github.com/developer006tz'
+            ],
+            [
+                'category' => ['Flutter'],
+                'title' => 'Yii2 + VueJs Notes application',
+                'image' => url('/img/yii2-vue-notes.png'),
+                'github' =>  'https://github.com/developer006tz'
             ],
         ];
 

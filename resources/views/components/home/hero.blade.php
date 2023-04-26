@@ -11,11 +11,11 @@
             I am <span class="rounded-md text-amber-600">Software Developer</span>.
           </h1>
           <p class="text-base mb-8 max-w-[520px]">
-            I am a developer with 2+ years of experience. <br/>
+            I am a junior fullstack developer with 2+ years of experience. <br/>
             I love sharing my knowledge to others, that's why I created a
             <a
               class="text-primary font-bold no-underline hover:underline underline-offset-2 decoration-2 decoration-primary"
-              href="https://youtube.com/TheCodeholic" target="_blank">YouTube Channel</a>. <br>
+              href="https://youtube.com/techtz" target="_blank">YouTube Channel</a>. <br>
           </p>
           <ul class="flex flex-wrap items-center">
             <li>
@@ -38,7 +38,7 @@
         <div class="lg:text-right lg:ml-auto">
           <div class="relative inline-block z-10 pt-11 lg:pt-0">
             <img
-              src="{{ url('/img/me_hero.png') }}"
+              src="{{ url('/img/konyo-profile.png') }}"
               alt="hero"
               class="max-w-full lg:ml-auto"
             />
