@@ -35,7 +35,7 @@
               @endforeach
 
               <div class="ml-0 lg:ml-10 xl:ml-16 relative top-1">
-                <input type="checkbox" id="dark_light" checked data-toggle="toggle" data-size="lg">
+{{--                <input type="checkbox" id="dark_light" checked data-toggle="toggle" data-size="lg">--}}
               </div>
             </ul>
           </nav>

@@ -11,11 +11,9 @@
             I am <span class="rounded-md text-amber-600">Software Developer</span>.
           </h1>
           <p class="text-base mb-8 max-w-[520px]">
-            I am a junior fullstack developer with 2+ years of experience. <br/>
-            I love sharing my knowledge to others, that's why I created a
-            <a
-              class="text-primary font-bold no-underline hover:underline underline-offset-2 decoration-2 decoration-primary"
-              href="https://youtube.com/techtz" target="_blank">YouTube Channel</a>. <br>
+            I am a passionate junior fullstack developer with more than two years of experience.
+            <br/> I enjoy learning new skills and technologies, and I also like to help others by sharing what I know.
+             <br>
           </p>
           <ul class="flex flex-wrap items-center">
             <li>
