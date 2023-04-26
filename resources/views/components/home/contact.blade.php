@@ -45,6 +45,10 @@
                 Email Address
               </h4>
               <p class="text-base text-body-color dark:text-gray-300">developer@ludovickonyo.com</p>
+              <h4 class="font-bold text-dark dark:text-gray-200 text-xl mb-1">
+                Contact
+              </h4>
+              <p class="text-base text-body-color dark:text-gray-300">+255 746 828 843</p>
             </div>
           </div>
         </div>
