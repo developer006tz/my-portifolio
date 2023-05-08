@@ -27,7 +27,7 @@
 
 <link rel="me" href="https://github.com/developer006tz">
 
-    <title>Ludovic - Software Engineer profile</title>
+    <title>Ludovick - Software Engineer profile</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{URL::to('img/dev.png')}}">
 
 
