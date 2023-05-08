@@ -8,7 +8,7 @@
             class="text-dark dark:text-gray-200 font-bold text-4xl sm:text-[42px] lg:text-[40px] xl:text-[42px] leading-snug mb-6"
           >
             My Name is Ludovic. <br/>
-            I am <span class="rounded-md text-amber-600">Software Developer</span>.
+            I am <span class="rounded-md text-amber-600">Software Engineer</span>.
           </h1>
           <p class="text-base mb-8 max-w-[520px]">
             I am a passionate Software Engineer with  two years of experience.

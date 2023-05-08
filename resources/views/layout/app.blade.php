@@ -3,6 +3,33 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ludovick is a passionate software engineer with two years of experience. He enjoys learning new skills and technologies and sharing his knowledge with others.">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="software developer, software engineer, programming">
+    <meta name="author" content="Ludovick">
+    <meta name="application-name" content="Ludovick's Portfolio">
+    <meta name="generator" content="Laravel 9">
+
+    <!-- Open Graph / Facebook -->
+<meta property="og:url" content="https://www.instagram.com/tm_ludovic/">
+<meta property="og:type" content="Instagram">
+<meta property="og:title" content="Ludovic - Software Developer">
+<meta property="og:description" content="Ludovic is a passionate software engineer with two years of experience. He enjoys learning new skills and technologies and sharing his knowledge with others.">
+<meta property="og:image" content="https://ludovickonyo.com/img/konyo-profile.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://twitter.com/Ludovic_konyo">
+<meta name="twitter:title" content="Ludovic - Software Developer">
+<meta name="twitter:description" content="Ludovic is a passionate software engineer with two years of experience. He enjoys learning new skills and technologies and sharing his knowledge with others.">
+<meta name="twitter:image" content="https://pbs.twimg.com/profile_images/1655689842334760963/WvrYMwCy_400x400.jpg">
+
+<!-- LinkedIn -->
+<link rel="canonical" href="https://www.linkedin.com/in/ludovick-konyo-186504252/">
+
+<!-- GitHub -->
+<link rel="me" href="https://github.com/developer006tz">
 
     <title>Ludovic - Software Developer profile</title>
 
