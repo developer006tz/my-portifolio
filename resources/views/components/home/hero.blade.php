@@ -11,7 +11,7 @@
             I am <span class="rounded-md text-amber-600">Software Developer</span>.
           </h1>
           <p class="text-base mb-8 max-w-[520px]">
-            I am a passionate junior fullstack developer with more than two years of experience.
+            I am a passionate Software Engineer with  two years of experience.
             <br/> I enjoy learning new skills and technologies, and I also like to help others by sharing what I know.
              <br>
           </p>

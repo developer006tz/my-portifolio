@@ -43,7 +43,7 @@
             About Me
           </h2>
           <p class="text-base dark:text-gray-400 mb-8">
-            I am a junior full-stack developer with a keen interest in web and mobile application development.<br />
+            I am a Software Engineer with a keen interest in web and mobile application development.<br />
             I have experience in working with Laravel, CodeIgniter, Reactjs, Bootstrap, Tailwind, Django and Flutter. <br /><br /> I have
             developed various web applications such as school-management-software's, company-websites and event management systems using these
             technologies. I have also created mobile applications using Flutter. <br /><br />I have a good
