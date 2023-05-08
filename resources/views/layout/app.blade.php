@@ -32,6 +32,9 @@
 <link rel="me" href="https://github.com/developer006tz">
 
     <title>Ludovic - Software Developer profile</title>
+    {{-- favicon of my site --}}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{URL::to('img/dev.png')}}">
+
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.slim.js" integrity="sha512-G1QAKkF7DrLYdKiz55LTK3Tlo8Vet2JnjQHuJh+LnU0zimJkMZ7yKZ/+lQ/0m94NC1EisSVS1b35jugu3wLdQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
