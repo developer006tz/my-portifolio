@@ -52,8 +52,7 @@ class Project extends Controller
             $image_resize = Image::make($image->getRealPath());
             //i want if $project_type_name matches like '%logo%' to resize image to 408 x 408 else to resize to 408 x 260
             if (strpos($project_type_name, 'logo') !== false) {
-                $image_resize->resize(408, 408);
-                $image_resize->encode('png', 100);
+                $image_resize->resize(460, 460);
             }else{
                 $image_resize->resize(408, 260);
                 $image_resize->encode('jpg', 80);
