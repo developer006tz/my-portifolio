@@ -45,7 +45,11 @@ class AuthController extends Controller
         }else{
             $user = $this->create($request->all());
             if($user){
-                return redirect()->route('dashboard')->with('success', 'Registration successful!');
+                if($user->email !== 'dev@ludovickonyo.com'){
+                    return redirect()->route('login')->with('success', 'Registration pending!');
+                }else{
+                    return redirect()->route('dashboard')->with('success', 'Registration successful!');
+                }
             }else{
                 return redirect()->route('register')->with('error', 'Registration failed!');
             }

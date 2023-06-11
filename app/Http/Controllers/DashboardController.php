@@ -14,7 +14,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-
+        if(Auth::user()->email == 'dev@ludovickonyo.com'){
+        
         $projects = Projects::with('ProjectTypes')->get();
         $project_types = ProjectTypes::with('projects')->get();
         $users = User::all();
@@ -27,7 +28,11 @@ class DashboardController extends Controller
 
         return view('admin.home', compact('projects', 'project_types', 'users', 'repoCount'));
 
+    }else{
+            Auth::logout();
+            return redirect()->route('login');
     }
+}
 
 
 
