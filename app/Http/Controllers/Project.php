@@ -42,13 +42,23 @@ class Project extends Controller
             'lessons' => '',
         ]);
 
+        $project_types_id = $request->project_types_id;
+        $project_type_name = ProjectTypes::where('id', $project_types_id)->first()->name;
+        $project_type_name = strtolower($project_type_name);
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = str_replace(' ','-',strtolower(Auth::user()->name)).'-'. time() .'-'. str_replace(' ','-', substr(strtolower($request->title),0,25) ) . '.jpg';
             $image_resize = Image::make($image->getRealPath());
-            $image_resize->resize(408, 260);
-            $image_resize->encode('jpg', 80);
+            //i want if $project_type_name matches like '%logo%' to resize image to 408 x 408 else to resize to 408 x 260
+            if (strpos($project_type_name, 'logo') !== false) {
+                $image_resize->resize(408, 408);
+                $image_resize->encode('png', 100);
+            }else{
+                $image_resize->resize(408, 260);
+                $image_resize->encode('jpg', 80);
+            }
+            
             $image_resize->save(storage_path('app/public/' . $filename));
             $request->image = $filename;
         }
@@ -69,9 +79,19 @@ class Project extends Controller
         ];
 
         if(empty($request->github)){
-            $data['github'] = 'https://github.com/developer006tz';
+            if (strpos($project_type_name, 'logo') !== false) {
+                $data['github'] = url(\Storage::url($request->image));
+            }else{
+               $data['github'] = 'https://github.com/developer006tz'; 
+            }
+            
         }else{
-            $data['github'] = $request->github;
+            
+            if (strpos($project_type_name, 'logo') !== false) {
+                $data['github'] = url(\Storage::url($request->image));
+            } else {
+                $data['github'] = $request->github;
+            }
         }
 
 
@@ -117,7 +137,7 @@ class Project extends Controller
             $image = $request->file('image');
             $filename = str_replace(' ','-',strtolower(Auth::user()->name)).'-'. time() .'-'. str_replace(' ','-', substr(strtolower($request->title),0,25) ) . '.jpg';
             $image_resize = Image::make($image->getRealPath());
-            $image_resize->resize(408, 260);
+            $image_resize->resize(408, 398);
             $image_resize->encode('jpg', 80);
             $image_resize->save(storage_path('app/public/' . $filename));
             $request->image = $filename;
