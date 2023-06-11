@@ -31,6 +31,7 @@ class Portfolio extends Component
                 'title' => $project->title,
                 'image' => url(\Storage::url($project->image)),
                 'github' => $project->github,
+                
             ];
         })->toArray();
 
