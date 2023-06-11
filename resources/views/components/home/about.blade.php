@@ -55,7 +55,7 @@
             <span class="text-amber-500 font-bold">Logos, Posters, Videos</span> and <span class="text-amber-500 font-bold">Fliers</span>. <br />
             For you.<br />
           </p>
-          <x-button-link href="https://youtube.com/techtz" variant="red" target="_blank">
+          <x-button-link href="https://github.com/developer006tz" variant="red" target="_blank">
             View my Works
           </x-button-link>
         </div>

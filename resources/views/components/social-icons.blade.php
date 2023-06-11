@@ -74,7 +74,7 @@
     </svg>
   </a>
   <a
-    href="https://youtube.com/techtz"
+    href="https://github.com/developer006tz"
     target="_blank"
     class="
        w-10

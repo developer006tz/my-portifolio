@@ -20,7 +20,7 @@
       @endforeach
     </div>
     <div class="flex justify-center">
-      <x-button-link href="https://youtube.com/techtz" target="_blank" class="rounded-lg">
+      <x-button-link href="https://github.com/developer006tz" target="_blank" class="rounded-lg">
         View All Tutorials
       </x-button-link>
     </div>
