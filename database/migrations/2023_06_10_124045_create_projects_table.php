@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\ProjectTypes::class)->constrained();
             $table->string('title');
             $table->string('image');
-            $table->string('github')->nullable();
+            $table->string('github')->default('https://github.com/developer006tz');
             $table->string('url')->nullable();
             $table->text('description')->nullable();
             $table->text('technologies')->nullable();

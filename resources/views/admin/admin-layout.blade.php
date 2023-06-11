@@ -10,7 +10,7 @@
     <nav class="bg-white p-6 flex justify-between items-center">
       <div class="text-lg font-semibold">
         @auth
-        <a href="{{route('dashboard')}}" class="text-gray-900">{{Auth::user()->name}}</a>
+        <a href="{{url('/')}}" class="text-gray-900">{{Auth::user()->name}}</a>
         @else
         <a href="{{route('login')}}" class="text-gray-900">Login</a>
         @endauth

@@ -32,14 +32,14 @@ class Project extends Controller
         $request->validate([
             'project_types_id' => 'required',
             'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'github' => 'required',
-            'url' => 'required',
-            'description' => 'required',
-            'technologies' => 'required',
-            'features' => 'required',
-            'challenges' => 'required',
-            'lessons' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:19048',
+            'github' => '',
+            'url' => '',
+            'description' => '',
+            'technologies' => '',
+            'features' => '',
+            'challenges' => '',
+            'lessons' => '',
         ]);
 
 
@@ -59,7 +59,7 @@ class Project extends Controller
             'project_types_id' => $request->project_types_id,
             'title' => $request->title,
             'image' => $request->image,
-            'github' => $request->github,
+            // 'github' => $request->github,
             'url' => $request->url,
             'description' => $request->description,
             'technologies' => $request->technologies,
@@ -67,6 +67,12 @@ class Project extends Controller
             'challenges' => $request->challenges,
             'lessons' => $request->lessons,
         ];
+
+        if(empty($request->github)){
+            $data['github'] = 'https://github.com/developer006tz';
+        }else{
+            $data['github'] = $request->github;
+        }
 
 
         Projects::create($data);
@@ -93,17 +99,18 @@ class Project extends Controller
     //update
     public function update(Request $request,  $project): RedirectResponse
     {
+        $project = Projects::find($project);
         $request->validate([
             'project_types_id' => 'required',
             'title' => 'required',
-            'image' => 'required',
-            'github' => 'required',
-            'url' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'github' => '',
+            'url' => '',
             'description' => 'required',
-            'technologies' => 'required',
-            'features' => 'required',
-            'challenges' => 'required',
-            'lessons' => 'required',
+            'technologies' => '',
+            'features' => '',
+            'challenges' => '',
+            'lessons' => '',
         ]);
 
         if ($request->hasFile('image')) {
@@ -126,7 +133,6 @@ class Project extends Controller
         $data = [
             'project_types_id' => $request->project_types_id,
             'title' => $request->title,
-            'image' => $request->image,
             'github' => $request->github,
             'url' => $request->url,
             'description' => $request->description,
@@ -136,7 +142,10 @@ class Project extends Controller
             'lessons' => $request->lessons,
         ];
 
-        $project = Projects::find($project);
+        if (!empty($request->image)) {
+            $data['image'] = $request->image;
+        }
+
         $project->update($data);
         return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
     }

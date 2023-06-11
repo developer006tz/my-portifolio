@@ -6,6 +6,9 @@ use Illuminate\Support\Arr;
 use Illuminate\View\Component;
 use function url;
 use function view;
+use \App\Models\ProjectTypes;
+use \App\Models\Projects;
+
 
 class Portfolio extends Component
 {
@@ -20,52 +23,18 @@ class Portfolio extends Component
      */
     public function __construct()
     {
-        $this->items = [
-            [
-                'category' => ['Laravel', 'Tailwind.css', 'Bootstrap'],
-                'title' => 'Full Stack app with Laravel, Tailwindcss ,Bootstrap',
-                'image' => url('/img/survey.png'),
-                'github' => 'https://github.com/developer006tz'
-            ],
-            [
-                'category' => ['Tailwind.css', 'Bootstrap'],
-                'title' => 'Okioma.se, My profile, gtog.co.tz',
-                'image' => url('/img/yii2-ecommerce.jpg'),
-                'github' => 'https://github.com/developer006tz'
-            ],
-            [
-                'category' => ['Codeigniter', 'Laravel'],
-                'title' => 'REST API with Laravel 9 and Sanctum',
-                'image' => url('/img/laravel-rest-api.png'),
-                'github' => 'https://github.com/developer006tz'
-            ],
-            [
-                'category' => ['Django'],
-                'title' => 'Django project , Timetable management System',
-                'image' => url('/img/php-mvc-framework.png'),
-                'github' => 'https://github.com/developer006tz'
-            ],
-            [
-                'category' => ['Logo Design', 'Fliers','Posters'],
-                'title' => 'Logo Design',
-                'image' => url('/img/yii2-youtube-clone.png'),
-                'github' => 'https://github.com/developer006tz'
-            ],
-            [
-                'category' => ['Fliers', 'Posters'],
-                'title' => 'Fliers and Poster Design',
-                'image' => url('/img/yii2-vue-notes.png'),
-                'github' =>  'https://github.com/developer006tz'
-            ],
-            [
-                'category' => ['Flutter'],
-                'title' => 'Mobile Application Development',
-                'image' => url('/img/yii2-vue-notes.png'),
-                'github' =>  'https://github.com/developer006tz'
-            ],
-        ];
+        $projects = Projects::with('projectTypes')->get();
 
-        $this->tabs = array_unique(Arr::flatten(Arr::pluck($this->items, 'category')));
+        $this->items = $projects->map(function ($project) {
+            return [
+                'category' => [$project->projectTypes->name],
+                'title' => $project->title,
+                'image' => url($project->image),
+                'github' => $project->github,
+            ];
+        })->toArray();
+
+        $this->tabs = ProjectTypes::pluck('name')->unique()->toArray();
     }
 
     /**

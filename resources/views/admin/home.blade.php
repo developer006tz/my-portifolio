@@ -18,7 +18,7 @@
     <!-- Card -->
     <div class="bg-white rounded-lg shadow-md p-6">
       <h2 class="text-xl font-semibold mb-2">Github Repos</h2>
-      <p class="text-gray-600">33</p>
+      <p class="text-gray-600">{{$repoCount}}</p>
       <a href="https://github.com/developer006tz" class="text-blue-500 hover:underline">View All</a>
     </div>
   </div>

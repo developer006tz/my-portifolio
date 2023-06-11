@@ -12,7 +12,7 @@ class PortfolioItem extends Component
      * @param string $image
      * @param string $github
      */
-    public function __construct(public string $title, public array $categories, public string $image, public string $github)
+    public function __construct(public string $title, public array $categories, public string $image, public string $github='developer006tz')
     {
     }
 

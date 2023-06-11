@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Projects;
 use App\Models\ProjectTypes;
+use Illuminate\Support\Facades\Http;
 
 
 use Illuminate\Http\Request;
@@ -17,7 +18,14 @@ class DashboardController extends Controller
         $projects = Projects::with('ProjectTypes')->get();
         $project_types = ProjectTypes::with('projects')->get();
         $users = User::all();
-        return view('admin.home', compact('projects', 'project_types', 'users'));
+
+        //github repos count
+        $token = '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';
+        $response = Http::withToken($token)->get('https://api.github.com/user/repos?per_page=100');
+        $repositories = $response->json();
+        $repoCount = count($repositories);
+
+        return view('admin.home', compact('projects', 'project_types', 'users', 'repoCount'));
 
     }
 
