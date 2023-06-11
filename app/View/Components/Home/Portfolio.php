@@ -29,7 +29,7 @@ class Portfolio extends Component
             return [
                 'category' => [$project->projectTypes->name],
                 'title' => $project->title,
-                'image' => url($project->image),
+                'image' => url(\Storage::url($project->image)),
                 'github' => $project->github,
             ];
         })->toArray();
