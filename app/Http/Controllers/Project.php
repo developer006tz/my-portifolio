@@ -47,14 +47,11 @@ class Project extends Controller
 
         $imageResize->encode('jpg', 80);
         $imageResize->save(storage_path('app/public/' . $filename));
-
-        $request->merge(['image' => $filename]);
     }
 
     $data = $request->only([
         'project_types_id',
         'title',
-        // 'image',
         'url',
         'description',
         'technologies',
@@ -65,8 +62,6 @@ class Project extends Controller
 
     $data['github'] = $this->getGithubFieldValue($request->github, $projectTypeName);
     $data['image']=$filename;
-
-    dd($data);
 
     Projects::create($data);
 
