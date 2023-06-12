@@ -8,7 +8,7 @@
     <a href="{{route('project-types.create')}}" class="bg-blue-500 text-white px-4 py-3 rounded font-medium">Create Project Type</a>
 
   </div>
-  @isset($projectTypes)
+  @isset($items)
   <div class="overflow-x-auto mx-auto max-w-screen-xl px-4 lg:px-12">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -19,7 +19,7 @@
       </tr>
       </thead>
       <tbody>
-      @forelse($projectTypes as $project_type)
+      @forelse($items as $project_type)
         <tr>
           <td class="border px-4 py-2 text-center">{{$project_type->name ?? '-'}}</td>
           <td class="border px-4 py-2 text-center">{{$project_type->slug ?? '-'}}</td>

@@ -10,19 +10,20 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Cache;
+use App\Helpers\Unyama;
 
-class Project extends Controller
+class Project extends Render
 {
    
     public function index(): View
     {
-        $projects = Projects::with('projectTypes')->get();
-        return view('admin.project.index', compact('projects'));
+        return Unyama::index('admin.project.index', Projects::class);
+
     }
     public function create(): View
     {
-        $ProjectTypes = ProjectTypes::all();
-        return view('admin.project.create',compact('ProjectTypes'));
+        
+        return Unyama::create('admin.project.create', Projects::class, ProjectTypes::class);
     }
 
     public function store(Request $request): RedirectResponse
@@ -61,6 +62,7 @@ class Project extends Controller
 
     Projects::create($data);
 
+
     return redirect()->route('projects.index')->with('success', 'Project created successfully.');
 }
 
@@ -72,9 +74,7 @@ class Project extends Controller
 
     public function edit( $project): View
     {
-        $project = Projects::find($project);
-        $ProjectTypes = ProjectTypes::all();
-        return view('admin.project.edit', compact('project','ProjectTypes'));
+        return Unyama::edit('admin.project.edit', Projects::class, $project, ProjectTypes::class);
     }
 
  
@@ -126,12 +126,8 @@ class Project extends Controller
 
     public function destroy(Request $request,  $project): RedirectResponse
     {
-
             deleteProjectImage($project);
-            Projects::findOrFail($project)->delete();
-            return redirect()->route('projects.index')->with('success', 'Project deleted successfully.');
-        
-        
+            return Unyama::destroy('projects.index',Projects::class, $project);
     }
 
 

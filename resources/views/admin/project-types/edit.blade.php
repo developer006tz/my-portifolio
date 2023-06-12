@@ -9,8 +9,8 @@
 
   </div>
   <div class="flex justify-center sm:p-5 rounded-lg h-auto mb-4">
-    <div class="md:w-1/2 sm:w-full lg:w-1/2 bg-white p-6 rounded-lg">
-      <form action="{{route('project-types.update',$ProjectType->id)}}" method="post">
+    <div class="md:w-11/12 sm:w-full lg:w-1/2 bg-white p-6 rounded-lg">
+      <form action="{{route('project-types.update',$item->id)}}" method="post">
         @include('admin.project-types.form')
       </form>
     </div>

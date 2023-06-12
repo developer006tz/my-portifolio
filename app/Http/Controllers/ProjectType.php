@@ -7,69 +7,47 @@ use App\Models\ProjectTypes;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-
+use App\Helpers\Unyama;
 
 class ProjectType extends Controller
 {
-    //index
+
     public function index(): View
     {
-        $projectTypes = ProjectTypes::all();
-        return view('admin.project-types.index', compact('projectTypes'));
+        
+        return Unyama::index('admin.project-types.index', ProjectTypes::class);
     }
 
-    //create
-    public function create():view
+    public function create(): View
     {
-
-        $ProjectTypes = ProjectTypes::all();
-
-        return view('admin.project-types.create',compact('ProjectTypes'));
+        return Unyama::create('admin.project-types.create', ProjectTypes::class);
     }
 
-    //store
-    public function store(Request $request)
+
+    public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required',
-            'slug' => 'required',
-        ]);
-        ProjectTypes::create($request->all());
-        return redirect()->route('project-types.index')->with('success', 'Project Type created successfully.');
+        return Unyama::store($request, 'project-types.index', ProjectTypes::class);
     }
 
-    //show
-    public function show( $projectType)
+    public function show($projectType): View
     {
-        $projectType = ProjectTypes::find($projectType);
-        return view('admin.project-types.show', compact('projectType'));
+        return Unyama::show('admin.project-types.show', ProjectTypes::class, $projectType);
     }
 
-    //edit
-    public function edit( $ProjectType)
+    public function edit($projectType): View
     {
-        $ProjectType = ProjectTypes::find($ProjectType);
-        return view('admin.project-types.edit', compact('ProjectType'));
+        return Unyama::edit('admin.project-types.edit', ProjectTypes::class, $projectType,null);
     }
 
-    //update
-    public function update(Request $request,  $ProjectType)
+
+    public function update(Request $request, $projectType): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required',
-            'slug' => 'required',
-        ]);
-
-        $ProjectType = ProjectTypes::find($ProjectType);
-        $ProjectType->update($request->all());
-        return redirect()->route('project-types.index')->with('success', 'Project Type updated successfully.');
+        return Unyama::update($request, 'project-types.index', ProjectTypes::class, $projectType);
     }
 
-    //destroy
-    public function destroy( $projectType)
+    public function destroy($projectType): RedirectResponse
     {
-        $projectType = ProjectTypes::find($projectType);
-        $projectType->delete();
-        return redirect()->route('project-types.index')->with('success', 'Project Type deleted successfully.');
+        return Unyama::destroy('project-types.index', ProjectTypes::class, $projectType);
     }
+
 }

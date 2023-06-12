@@ -10,7 +10,7 @@
   </div>
   <div class="flex justify-center sm:p-5 rounded-lg h-auto mb-4">
     <div class="md:w-1/2 sm:w-full lg:w-1/2 bg-white p-6 rounded-lg">
-      <form action="{{route('projects.update',$project->id)}}" method="post" enctype="multipart/form-data">
+      <form action="{{route('projects.update',$item->id)}}" method="post" enctype="multipart/form-data">
         @include('admin.project.form')
       </form>
     </div>
