@@ -28,79 +28,72 @@ class Project extends Controller
 
     //store
     public function store(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'project_types_id' => 'required',
-            'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:19048',
-            'github' => '',
-            'url' => '',
-            'description' => '',
-            'technologies' => '',
-            'features' => '',
-            'challenges' => '',
-            'lessons' => '',
-        ]);
+{
+    $request->validate([
+        'project_types_id' => 'required',
+        'title' => 'required',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:19048',
+    ]);
 
-        $project_types_id = $request->project_types_id;
-        $project_type_name = ProjectTypes::where('id', $project_types_id)->first()->name;
-        $project_type_name = strtolower($project_type_name);
+    $project_types_id = $request->project_types_id;
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $filename = str_replace(' ','-',strtolower(Auth::user()->name)).'-'. time() .'-'. str_replace(' ','-', substr(strtolower($request->title),0,25) ) . '.jpg';
-            $image_resize = Image::make($image->getRealPath());
-            //i want if $project_type_name matches like '%logo%' to resize image to 408 x 408 else to resize to 408 x 260
-            if (strpos($project_type_name, 'logo') !== false) {
-                $image_resize->resize(460, 460);
-            }else{
-                $image_resize->resize(408, 260);
-                $image_resize->encode('jpg', 80);
-            }
-            
-            $image_resize->save(storage_path('app/public/' . $filename));
-            $request->image = $filename;
-        }
+    $project_type_name = Cache::remember("project-type-name-{$project_types_id}", 3600, function () use ($project_types_id) {
+        return ProjectTypes::find($project_types_id)->name;
+    });
 
-        // $request->image = $filename;
-        //insert into database table make sure for image to save image name $request->image = $filename;
-        $data = [
-            'project_types_id' => $request->project_types_id,
-            'title' => $request->title,
-            'image' => $request->image,
-            // 'github' => $request->github,
-            'url' => $request->url,
-            'description' => $request->description,
-            'technologies' => $request->technologies,
-            'features' => $request->features,
-            'challenges' => $request->challenges,
-            'lessons' => $request->lessons,
-        ];
+    $project_type_name = strtolower($project_type_name);
 
-        if(empty($request->github)){
-            if (strpos($project_type_name, 'logo') !== false) {
-                $data['github'] = url(\Storage::url($request->image));
-            }else{
-               $data['github'] = 'https://github.com/developer006tz'; 
-            }
-            
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $filename = str_replace(' ','-',strtolower(Auth::user()->name)).'-'. time() .'-'. str_replace(' ','-', substr(strtolower($request->title),0,25) ) . '.jpg';
+        $image_resize = Image::make($image->getRealPath());
+
+        if (strpos($project_type_name, 'logo') !== false) {
+            $image_resize->resize(460, 460);
         }else{
-            
-            if (strpos($project_type_name, 'logo') !== false) {
-                $data['github'] = url(\Storage::url($request->image));
-            } else {
-                $data['github'] = $request->github;
-            }
+            $image_resize->resize(408, 260);
+            $image_resize->encode('jpg', 80);
         }
 
-
-        Projects::create($data);
-
-        return redirect()
-            ->route('projects.index')
-            ->with('success', 'Project created successfully.');
+        $image_resize->save(storage_path('app/public/' . $filename));
+        $request->image = $filename;
     }
 
+    $data = [
+        'project_types_id' => $request->project_types_id,
+        'title' => $request->title,
+        'image' => $request->image,
+        'url' => $request->url,
+        'description' => $request->description,
+        'technologies' => $request->technologies,
+        'features' => $request->features,
+        'challenges' => $request->challenges,
+        'lessons' => $request->lessons,
+    ];
+
+    // Use a ternary operator to set the value of the github field
+    if(empty($request->github)){
+      if (strpos($project_type_name, 'logo') !== false) {
+          $data['github'] = url(\Storage::url($request->image));
+      }else{
+         $data['github'] = 'https://github.com/developer006tz'; 
+      }
+      
+  }else{
+      
+      if (strpos($project_type_name, 'logo') !== false) {
+          $data['github'] = url(\Storage::url($request->image));
+      } else {
+          $data['github'] = $request->github;
+      }
+  }
+
+    Projects::create($data);
+
+    return redirect()
+        ->route('projects.index')
+        ->with('success', 'Project created successfully.');
+}
     //show
     public function show(Projects $project): View
     {
