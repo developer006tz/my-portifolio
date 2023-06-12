@@ -8,8 +8,7 @@
 
 <div class="mb-4">
   <label for="project_types_id" class="sr-only">Project Type</label>
-
-  {!! formSelect('project_types_id', $ProjectTypes, old('project_types_id'), 'bg-gray-100 border-2 w-full p-4 rounded-lg') !!}
+  {!! FormHelper::selectWithDefault('project_types_id', $ProjectTypes, 'id', 'name', ($editing ? $project->project_types_id : null)) !!}
   @error('project_types_id')
   <div class="text-red-500 mt-2 text-sm">
     {{$message}}

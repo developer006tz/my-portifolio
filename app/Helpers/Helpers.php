@@ -140,4 +140,19 @@ if (!function_exists('formSelect')) {
     }
 }
 
+function select($name, $options, $selected = null)
+{
+    $html = '<select name="' . $name . '" id="' . $name . '" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error(' . $name . ') border-red-500 @enderror">';
+    $html .= '<option value="">Select ' . ucfirst(str_replace('_', ' ', $name)) . '</option>';
+
+    foreach ($options as $option) {
+        $html .= '<option value="' . $option->id . '" ' . (($selected && $selected->id == $option->id) || old($name) == $option->id ? 'selected' : '') . '>' . $option->name . '</option>';
+    }
+
+    $html .= '</select>';
+    echo $html;
+}
+
+
+
 
