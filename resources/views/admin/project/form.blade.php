@@ -8,14 +8,14 @@
 
 <div class="mb-4">
   <label for="project_types_id" class="sr-only">Project Type</label>
-  {{-- {!! FormHelper::selectWithDefault('project_types_id',$items2, 'id', 'name', ($editing ? $item->project_types_id : null)) !!} --}}
-  <select name="project_types_id" id="project_types_id" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('project_types_id') border-red-500 @enderror">
+  {!! FormHelper::selectWithDefault('project_types_id',$items2, 'id', 'name', ($editing ? $item->project_types_id : null)) !!}
+  {{-- <select name="project_types_id" id="project_types_id" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('project_types_id') border-red-500 @enderror">
     <option value="">Select Project Type</option>
     @isset($items2)
       @foreach($items2 as $project_type)
-        <option value="{{$project_type->id}}" {{ (old('project_types_id') == $project_type->id || (isset($project) && $project->project_types_id == $project_type->id)) ? 'selected' : '' }}>{{$project_type->name}}</option>      @endforeach
+        <option value="{{$project_type->id}}" {{ (old('project_types_id') == $project_type->id || (isset($item) && $item->project_types_id == $project_type->id)) ? 'selected' : '' }}>{{$project_type->name}}</option>      @endforeach
     @endisset
-  </select>
+  </select> --}}
   @error('project_types_id')
   <div class="text-red-500 mt-2 text-sm">
     {{$message}}
