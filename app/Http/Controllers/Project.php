@@ -120,7 +120,6 @@ class Project extends Render
         $data = $request->only([
             'project_types_id',
             'title',
-            'github',
             'url',
             'description',
             'technologies',
@@ -128,6 +127,16 @@ class Project extends Render
             'challenges',
             'lessons',
         ]);
+
+        if (empty($request->github) && strpos($projectTypeName, 'logo') !== false) {
+            $data['github'] = getGithubFieldValue($request->github, $projectTypeName, Projects::findOrFail($projectId)->image);
+        }else{
+            if(empty($request->github)){
+                $data['github'] = getGithubFieldValue($request->github, $projectTypeName, Projects::findOrFail($projectId)->image);
+            }else{
+                $data['github'] = $request->github;
+            }
+        }
     
         Projects::findOrFail($projectId)->update($data);
     
