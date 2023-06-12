@@ -183,7 +183,7 @@ private function getProjectTypeName($projectTypesId): string
 }
 
 
-private function getGithubFieldValue(string $github, string $projectTypeName): string
+/*private function getGithubFieldValue(string $github, string $projectTypeName): string
 {
     if (empty($github)) {
         if (strpos($projectTypeName, 'logo') !== false) {
@@ -198,7 +198,25 @@ private function getGithubFieldValue(string $github, string $projectTypeName): s
             return $github;
         }
     }
+}*/
+
+private function getGithubFieldValue(?string $github, string $projectTypeName): string
+{
+    if (empty($github)) {
+        if (strpos($projectTypeName, 'logo') !== false) {
+            return url(\Storage::url($this->request->image));
+        } else {
+            return 'https://github.com/developer006tz';
+        }
+    } else {
+        if (strpos($projectTypeName, 'logo') !== false) {
+            return url(\Storage::url($this->request->image));
+        } else {
+            return $github;
+        }
+    }
 }
+
 
 //end store
 
