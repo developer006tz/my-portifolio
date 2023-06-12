@@ -161,8 +161,15 @@ class Project extends Controller
         ];
 
         if (!empty($request->image)) {
-            $data['image'] = $request->image;
+            
+            if (strpos($project_type_name, 'logo') !== false){
+                $data['image'] = $request->image;
+                $data['github'] = url(\Storage::url($request->image));
+            }else{
+                $data['image'] = $request->image;
+            }
         }
+        
 
         $project->update($data);
         return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
