@@ -98,7 +98,7 @@
                         <th scope="col" class="px-4 py-3">image</th>
                         <th scope="col" class="px-4 py-3">github link</th>
                         <th scope="col" class="px-4 py-3">live url</th>
-                        <th scope="col" class="px-4 py-3">Description</th>
+                        <th scope="col" class="px-4 py-3"  style="min-width: 400px;">Description</th>
                         <th scope="col" class="px-4 py-3">technology</th>
                         <th scope="col" class="px-4 py-3">features</th>
                         <th scope="col" class="px-4 py-3">challenges</th>
@@ -116,7 +116,7 @@
                         <td  class="px-4 py-3"><img src="{{asset('storage/'.$project->image)}}" alt="" class="w-20 h-20"></td>
                         <td  class="px-4 py-3">{{$project->github}}</td>
                         <td  class="px-4 py-3">{{$project->url}}</td>
-                        <td  class="px-4 py-3">{{$project->description}}</td>
+                        <td  class="px-4 py-3"  style="min-width: 400px;">{{$project->description}}</td>
                         <td  class="px-4 py-3">{{$project->technology}}</td>
                         <td  class="px-4 py-3">{{$project->features}}</td>
                         <td  class="px-4 py-3">{{$project->challenges}}</td>
