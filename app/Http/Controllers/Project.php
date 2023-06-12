@@ -121,7 +121,7 @@ class Project extends Controller
         $project = Projects::findOrFail($projectId);
     
         $projectTypeName = Cache::remember("project-type-name-{$project->project_types_id}", 3600, function () use ($project) {
-            return $project->projectType->name;
+            return $project->projectTypes->name;
         });
     
         $projectTypeName = strtolower($projectTypeName);
