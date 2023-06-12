@@ -115,22 +115,28 @@ class Project extends Controller
         $request->validate([
             'project_types_id' => 'required',
             'title' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'github' => '',
-            'url' => '',
-            'description' => 'required',
-            'technologies' => '',
-            'features' => '',
-            'challenges' => '',
-            'lessons' => '',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:9048',
         ]);
+        
+        $project_types_id = $project->project_types_id;
+
+    $project_type_name = Cache::remember("project-type-name-{$project_types_id}", 3600, function () use ($project_types_id) {
+        return ProjectTypes::find($project_types_id)->name;
+    });
+
+    $project_type_name = strtolower($project_type_name);
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = str_replace(' ','-',strtolower(Auth::user()->name)).'-'. time() .'-'. str_replace(' ','-', substr(strtolower($request->title),0,25) ) . '.jpg';
             $image_resize = Image::make($image->getRealPath());
-            $image_resize->resize(408, 398);
+            if (strpos($project_type_name, 'logo') !== false) {
+            $image_resize->resize(460, 460);
             $image_resize->encode('jpg', 80);
+            }else{
+                $image_resize->resize(408, 260);
+                $image_resize->encode('jpg', 80);
+            }
             $image_resize->save(storage_path('app/public/' . $filename));
             $request->image = $filename;
             if ($project->image) {
