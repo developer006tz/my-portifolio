@@ -20,7 +20,7 @@ class ProjectType extends Controller
 
     public function create(): View
     {
-        return Unyama::create('admin.project-types.create', ProjectTypes::class);
+        return Unyama::create('admin.project-types.create', ProjectTypes::class, null);
     }
 
 

@@ -11,9 +11,6 @@ class Unyama
     public static function index(string $view, string $model)
     {
 
-       
-        // $items = $model::all();
-        //paginate 10
          $items = $model::paginate(10);
         return view($view, compact('items'));
     }
@@ -35,8 +32,9 @@ class Unyama
             'name' => 'required',
             'slug' => 'required',
         ]);
+       
+        $test = $model::create($request->all());
 
-        $model::create($request->all());
         return redirect()->route($redirectRoute)->with('success', 'Item created successfully.');
     }
 

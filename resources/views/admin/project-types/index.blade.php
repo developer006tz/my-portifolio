@@ -38,7 +38,12 @@
         </tr>
       @endforelse
       </tbody>
+     
     </table>
+    <div class="mt-4 mb-4 flex justify-end mr-0">
+      {{$items->links()}}
+
+    </div>
   </div>
   @endisset
 @endsection

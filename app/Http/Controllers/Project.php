@@ -26,45 +26,55 @@ class Project extends Render
         return Unyama::create('admin.project.create', Projects::class, ProjectTypes::class);
     }
 
+//     public function store(Request $request): RedirectResponse
+// {
+//     $request->validate([
+//         'project_types_id' => 'required',
+//         'title' => 'required',
+//         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:19048',
+//     ]);
+
+
+//     $projectTypeName = getProjectTypeName($request->project_types_id);
+
+//     if ($request->hasFile('image')) {
+//         $image = $request->file('image');
+//         $filename = generateImageFilename($request->title, Auth::user()->name);
+//         $imageResize = Image::make($image->getRealPath());
+//         resizeImageBasedOnProjectType($imageResize, $projectTypeName);
+//         $imageResize->encode('jpg', 80);
+//         $imageResize->save(storage_path('app/public/' . $filename));
+//     }
+
+//     $data = $request->only([
+//         'project_types_id',
+//         'title',
+//         'url',
+//         'description',
+//         'technologies',
+//         'features',
+//         'challenges',
+//         'lessons',
+//     ]);
+
+//     $data['github'] = getGithubFieldValue($request->github, $projectTypeName);
+//     $data['image']=$filename;
+
+//     Projects::create($data);
+
+
+//     return redirect()->route('projects.index')->with('success', 'Project created successfully.');
+// }
+
     public function store(Request $request): RedirectResponse
-{
-    $request->validate([
-        'project_types_id' => 'required',
-        'title' => 'required',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:19048',
-    ]);
-
-
-    $projectTypeName = getProjectTypeName($request->project_types_id);
-
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $filename = generateImageFilename($request->title, Auth::user()->name);
-        $imageResize = Image::make($image->getRealPath());
-        resizeImageBasedOnProjectType($imageResize, $projectTypeName);
-        $imageResize->encode('jpg', 80);
-        $imageResize->save(storage_path('app/public/' . $filename));
+    {
+        $result = $this->store_request($request);
+        if ($result) {
+            return redirect()->route('projects.index')->with('success', 'Project created successfully.');
+        } else {
+            return redirect()->route('projects.index')->with('error', 'Project created failed.');
+        }
     }
-
-    $data = $request->only([
-        'project_types_id',
-        'title',
-        'url',
-        'description',
-        'technologies',
-        'features',
-        'challenges',
-        'lessons',
-    ]);
-
-    $data['github'] = getGithubFieldValue($request->github, $projectTypeName);
-    $data['image']=$filename;
-
-    Projects::create($data);
-
-
-    return redirect()->route('projects.index')->with('success', 'Project created successfully.');
-}
 
     public function show(Projects $project): View
     {
