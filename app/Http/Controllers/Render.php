@@ -28,6 +28,7 @@ class Render extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = generateImageFilename($request->title, Auth::user()->name);
+           
             $imageResize = Image::make($image->getRealPath());
             resizeImageBasedOnProjectType($imageResize, $projectTypeName);
             $imageResize->encode('jpg', 80);
@@ -44,12 +45,8 @@ class Render extends Controller
             'challenges',
             'lessons',
         ]);
-
-        $data['github'] = getGithubFieldValue($request->github, $projectTypeName);
+        $data['github'] = getGithubFieldValue($request->github,$projectTypeName, $filename);
         $data['image'] = $filename;
-
-        
-
         return Projects::create($data);
     }
 }

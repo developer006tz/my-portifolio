@@ -28,17 +28,17 @@ if (!function_exists('getProjectTypeName')) {
 
 
 if (!function_exists('getGithubFieldValue')) {
-    function getGithubFieldValue(?string $github, string $projectTypeName): string
+    function getGithubFieldValue(?string $github, string $projectTypeName, ?string $imageName): string
     {
         if (empty($github)) {
             if (strpos($projectTypeName, 'logo') !== false) {
-                return url(\Storage::url(request()->image));
+                return url(\Storage::url($imageName));
             } else {
                 return 'https://github.com/developer006tz';
             }
         } else {
             if (strpos($projectTypeName, 'logo') !== false) {
-                return url(\Storage::url(request()->image));
+                return url(\Storage::url($imageName));
             } else {
                 return $github;
             }
