@@ -110,71 +110,73 @@ class Project extends Controller
     }
 
     //update
-    public function update(Request $request,  $project): RedirectResponse
-    {
-        $project = Projects::find($project);
-        $request->validate([
-            'project_types_id' => 'required',
-            'title' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:9048',
-        ]);
-        
-        $project_types_id = $project->project_types_id;
+    public function update(Request $request, $project): RedirectResponse
+{
+    $project = Projects::find($project);
+    $this->validateRequest($request);
 
-    $project_type_name = Cache::remember("project-type-name-{$project_types_id}", 3600, function () use ($project_types_id) {
-        return ProjectTypes::find($project_types_id)->name;
-    });
+    $projectType = $this->getProjectType($project->project_types_id);
+    $projectTypeName = strtolower($projectType->name);
 
-    $project_type_name = strtolower($project_type_name);
+    $data = $this->getUpdateData($request, $projectType);
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $filename = str_replace(' ','-',strtolower(Auth::user()->name)).'-'. time() .'-'. str_replace(' ','-', substr(strtolower($request->title),0,25) ) . '.jpg';
-            $image_resize = Image::make($image->getRealPath());
-            if (strpos($project_type_name, 'logo') !== false) {
-            $image_resize->resize(460, 460);
-            $image_resize->encode('jpg', 80);
-            }else{
-                $image_resize->resize(408, 260);
-                $image_resize->encode('jpg', 80);
-            }
-            $image_resize->save(storage_path('app/public/' . $filename));
-            $request->image = $filename;
-            if ($project->image) {
-                // check if file exists
-                if (file_exists(storage_path('app/public/' . $project->image))) {
-                    // delete file
-                    unlink(storage_path('app/public/' . $project->image));
-                }
-            }
-        }
-
-        $data = [
-            'project_types_id' => $request->project_types_id,
-            'title' => $request->title,
-            'github' => $request->github,
-            'url' => $request->url,
-            'description' => $request->description,
-            'technologies' => $request->technologies,
-            'features' => $request->features,
-            'challenges' => $request->challenges,
-            'lessons' => $request->lessons,
-        ];
-
-        if (!empty($request->image)) {
-            
-            if (strpos($project_type_name, 'logo') !== false){
-                $data['image'] = $request->image;
-                $data['github'] = url(\Storage::url($request->image));
-            }else{
-                $data['image'] = $request->image;
-            }
-        }
-        
-
-        $project->update($data);
-        return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
+    if ($request->hasFile('image')) {
+        $this->uploadImage($request, $project, $projectTypeName);
     }
+
+    $project->update($data);
+    return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
+}
+
+private function validateRequest(Request $request) 
+{
+    $request->validate([
+        'project_types_id' => 'required',
+        'title' => 'required',
+        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:9048',
+    ]);
+}
+
+private function getUpdateData(Request $request, $projectType)
+{
+    $data =  [
+        'project_types_id' => $request->project_types_id,
+        'title' => $request->title,
+        'github' => $request->github,
+        'url' => $request->url,
+        'description' => $request->description,
+        'technologies' => $request->technologies,
+        'features' => $request->features,
+        'challenges' => $request->challenges,
+        'lessons' => $request->lessons,
+    ];
+
+    if (!empty($request->image)) {
+        if (strpos($projectType->name, 'logo') !== false) {
+            $data['image'] = $request->image;
+            $data['github'] = url(\Storage::url($request->image));
+        } else {
+            $data['image'] = $request->image;
+        }
+    }
+    return $data;
+}
+
+private function uploadImage(Request $request, Projects $project, $projectTypeName) 
+{
+    // Upload image logic 
+    if ($project->image) {
+        // Delete old image
+        unlink(storage_path('app/public/' . $project->image));
+    }
+}
+
+private function getProjectType($id)
+{
+    return Cache::remember("project-type-{$id}", 3600, function () use ($id) {
+        return ProjectTypes::find($id);
+    });
+}
 
     //destroy
     public function destroy(Request $request,  $project): RedirectResponse
