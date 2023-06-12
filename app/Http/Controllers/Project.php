@@ -65,6 +65,8 @@ class Project extends Controller
 
     $data['github'] = $this->getGithubFieldValue($request->github, $projectTypeName);
 
+    dd($data);
+
     Projects::create($data);
 
     return redirect()->route('projects.index')->with('success', 'Project created successfully.');
