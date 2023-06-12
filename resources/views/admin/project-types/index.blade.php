@@ -3,14 +3,15 @@
 @section('heading','Project Types')
 
 @section('content')
-  <div class="flex justify-between items-center mb-4">
-    <h1 class="text-2xl font-bold"></h1>
+  <div class="flex justify-between items-center mb-4 mx-auto max-w-screen-xl px-4 lg:px-12">
+    <h1 class="text-2xl font-bold">@yield('heading')</h1>
     <a href="{{route('project-types.create')}}" class="bg-blue-500 text-white px-4 py-3 rounded font-medium">Create Project Type</a>
 
   </div>
   @isset($projectTypes)
-    <table class="table-auto w-full">
-      <thead>
+  <div class="overflow-x-auto mx-auto max-w-screen-xl px-4 lg:px-12">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
         <th class="px-4 py-2">Name</th>
         <th class="px-4 py-2">slug</th>
@@ -38,6 +39,7 @@
       @endforelse
       </tbody>
     </table>
+  </div>
   @endisset
 @endsection
 

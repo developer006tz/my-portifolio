@@ -8,13 +8,8 @@
 
 <div class="mb-4">
   <label for="project_types_id" class="sr-only">Project Type</label>
-  <select name="project_types_id" id="project_types_id" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('project_types_id') border-red-500 @enderror">
-    <option value="">Select Project Type</option>
-    @isset($ProjectTypes)
-      @foreach($ProjectTypes as $project_type)
-        <option value="{{$project_type->id}}" {{ (old('project_types_id') == $project_type->id || (isset($project) && $project->project_types_id == $project_type->id)) ? 'selected' : '' }}>{{$project_type->name}}</option>      @endforeach
-    @endisset
-  </select>
+
+  {!! formSelect('project_types_id', $ProjectTypes, old('project_types_id'), 'bg-gray-100 border-2 w-full p-4 rounded-lg') !!}
   @error('project_types_id')
   <div class="text-red-500 mt-2 text-sm">
     {{$message}}

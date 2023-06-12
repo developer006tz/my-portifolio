@@ -3,14 +3,13 @@
 @section('heading','Projects')
 
 @section('content')
-  <div class="flex justify-between items-center mb-4">
-    <h1 class="text-2xl font-bold"></h1>
+  <div class="flex justify-between items-center mb-4 mx-auto max-w-screen-xl px-4 lg:px-12">
+    <h1 class="text-2xl font-bold">@yield('heading')</h1>
     <a href="{{route('projects.create')}}" class="bg-blue-500 text-white px-4 py-3 rounded font-medium">Add Project</a>
 
   </div>
-
     <!-- test  -->
-    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 rounded-lg h-auto mb-4" >
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Start coding here -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
