@@ -54,7 +54,7 @@ class Project extends Controller
     $data = $request->only([
         'project_types_id',
         'title',
-        'image',
+        // 'image',
         'url',
         'description',
         'technologies',
@@ -64,6 +64,7 @@ class Project extends Controller
     ]);
 
     $data['github'] = $this->getGithubFieldValue($request->github, $projectTypeName);
+    $data['image']=$filename;
 
     dd($data);
 
