@@ -36,65 +36,40 @@ class Project extends Controller
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:19048',
     ]);
 
-    $project_types_id = $request->project_types_id;
-
-    $project_type_name = Cache::remember("project-type-name-{$project_types_id}", 3600, function () use ($project_types_id) {
-        return ProjectTypes::find($project_types_id)->name;
-    });
-
-    $project_type_name = strtolower($project_type_name);
+    $projectTypeName = $this->getProjectTypeName($request->project_types_id);
 
     if ($request->hasFile('image')) {
         $image = $request->file('image');
-        $filename = str_replace(' ','-',strtolower(Auth::user()->name)).'-'. time() .'-'. str_replace(' ','-', substr(strtolower($request->title),0,25) ) . '.jpg';
-        $image_resize = Image::make($image->getRealPath());
+        $filename = $this->generateImageFilename($request->title, Auth::user()->name);
+        $imageResize = Image::make($image->getRealPath());
 
-        if (strpos($project_type_name, 'logo') !== false) {
-            $image_resize->resize(460, 460);
-        }else{
-            $image_resize->resize(408, 260);
-            $image_resize->encode('jpg', 80);
-        }
+        $this->resizeImageBasedOnProjectType($imageResize, $projectTypeName);
 
-        $image_resize->save(storage_path('app/public/' . $filename));
-        $request->image = $filename;
+        $imageResize->encode('jpg', 80);
+        $imageResize->save(storage_path('app/public/' . $filename));
+
+        $request->merge(['image' => $filename]);
     }
 
-    $data = [
-        'project_types_id' => $request->project_types_id,
-        'title' => $request->title,
-        'image' => $request->image,
-        'url' => $request->url,
-        'description' => $request->description,
-        'technologies' => $request->technologies,
-        'features' => $request->features,
-        'challenges' => $request->challenges,
-        'lessons' => $request->lessons,
-    ];
+    $data = $request->only([
+        'project_types_id',
+        'title',
+        'image',
+        'url',
+        'description',
+        'technologies',
+        'features',
+        'challenges',
+        'lessons',
+    ]);
 
-    // Use a ternary operator to set the value of the github field
-    if(empty($request->github)){
-      if (strpos($project_type_name, 'logo') !== false) {
-          $data['github'] = url(\Storage::url($request->image));
-      }else{
-         $data['github'] = 'https://github.com/developer006tz'; 
-      }
-      
-  }else{
-      
-      if (strpos($project_type_name, 'logo') !== false) {
-          $data['github'] = url(\Storage::url($request->image));
-      } else {
-          $data['github'] = $request->github;
-      }
-  }
+    $data['github'] = $this->getGithubFieldValue($request->github, $projectTypeName);
 
     Projects::create($data);
 
-    return redirect()
-        ->route('projects.index')
-        ->with('success', 'Project created successfully.');
+    return redirect()->route('projects.index')->with('success', 'Project created successfully.');
 }
+//end store
     //show
     public function show(Projects $project): View
     {
@@ -174,7 +149,7 @@ class Project extends Controller
     private function resizeImageBasedOnProjectType($image, string $projectTypeName): void
     {
         if (strpos($projectTypeName, 'logo') !== false) {
-            $image->resize(460, 460);
+            $image->resize(498, 460);
         } else {
             $image->resize(408, 260);
         }
@@ -197,6 +172,35 @@ private function getProjectType($id)
         return ProjectTypes::find($id);
     });
 }
+
+//store
+
+private function getProjectTypeName($projectTypesId): string
+{
+    return Cache::remember("project-type-name-{$projectTypesId}", 3600, function () use ($projectTypesId) {
+        return ProjectTypes::find($projectTypesId)->name;
+    });
+}
+
+
+private function getGithubFieldValue(string $github, string $projectTypeName): string
+{
+    if (empty($github)) {
+        if (strpos($projectTypeName, 'logo') !== false) {
+            return url(\Storage::url($request->image));
+        } else {
+            return 'https://github.com/developer006tz';
+        }
+    } else {
+        if (strpos($projectTypeName, 'logo') !== false) {
+            return url(\Storage::url($request->image));
+        } else {
+            return $github;
+        }
+    }
+}
+
+//end store
 
     //destroy
     public function destroy(Request $request,  $project): RedirectResponse
