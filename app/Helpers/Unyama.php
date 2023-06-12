@@ -14,7 +14,7 @@ class Unyama
        
         // $items = $model::all();
         //paginate 10
-         $items = $model::paginate(2);
+         $items = $model::paginate(10);
         return view($view, compact('items'));
     }
 
