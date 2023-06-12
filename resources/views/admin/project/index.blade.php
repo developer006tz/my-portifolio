@@ -8,8 +8,7 @@
     <a href="{{route('projects.create')}}" class="bg-blue-500 text-white px-4 py-3 rounded font-medium">Add Project</a>
 
   </div>
-  @isset($projects)
-    
+
     <!-- test  -->
     <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
