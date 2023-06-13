@@ -7,13 +7,14 @@
           <h1
             class="text-dark dark:text-gray-200 font-bold text-4xl sm:text-[42px] lg:text-[40px] xl:text-[42px] leading-snug mb-6"
           >
-            My Name is Ludovic. <br/>
-            I am <span class="rounded-md text-amber-600">Software Engineer</span>.
+          Hello, I’m Ludovick, <br/>
+            a <span class="rounded-md text-amber-600">Software Developer</span>.
           </h1>
           <p class="text-base mb-8 max-w-[520px]">
-            I am a passionate Software Engineer with  two years of experience.
-            <br/> I enjoy learning new skills and technologies, and I also like to help others by sharing what I know.
+          who can build complex and scalable web and mobile applications. I have experience in using Laravel, Reactjs, Flutter and other advanced technologies.
+            <br/>I can create products such as company websites, school management systems, event management systems, and more.
              <br>
+             I have a solid grasp of database design, RBAC authorization, and API development. You can check out my portfolio and contact me if you need my services. 😊
           </p>
           <ul class="flex flex-wrap items-center">
             <li>
