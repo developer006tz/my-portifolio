@@ -6,6 +6,7 @@ use \App\Http\Controllers\DashboardController;
 use \App\Http\Controllers\Project;
 use \App\Http\Controllers\ProjectType;
 use \App\Http\Controllers\MessageController;
+use \App\Http\Controllers\Render;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,4 +46,8 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::post('/submit-message', [MessageController::class, 'submit'])->name('message.submit');
+
+Route::get('/ludovick-profile', [Render::class, 'index'])->name('website.index');
+
+
 

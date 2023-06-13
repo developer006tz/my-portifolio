@@ -40,6 +40,6 @@ class MessageController extends Controller
 
 
 
-        return back()->with('successMessage', 'Your message has been sent successfully!');
+        return redirect()->route('website.index')->with('successMessage', 'Your message has been sent successfully!');
     }
 }

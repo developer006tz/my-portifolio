@@ -14,6 +14,12 @@ use Intervention\Image\Facades\Image;
 
 class Render extends Controller
 {
+
+    public function index(): View
+     {
+        return view('home');
+     }
+
     public function store_request($request)
     {
         $request->validate([
