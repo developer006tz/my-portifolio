@@ -11,19 +11,27 @@
   <body class="bg-gray-100">
     <div class="max-w-3xl mx-auto p-8">
       <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <img
+        <div class="md:grid-col-2">
+        <div class="g-1">
+            <img
               src="{{URL::to('img/dev.png')}}"
               class="mr-3 h-8"
               alt="developer Logo"
             />
-        <div class="p-6">
-          <h2 class="text-lg font-semibold text-gray-800 mb-2">
-          Name: {{ $msg->name }}
-          </h2>
+        </div>
+        <div class="g-2">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">
+                    Name: {{ $msg->name }}
+                    </h2>
 
-          <h3 class="text-lg font-semibold text-gray-800 mb-2">
-          Name: {{ $msg->email }}
-          </h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                    Email: {{ $msg->email }}
+                    </h3>
+        </div>
+    </div>
+      
+        <div class="p-6">
+          
 
           
           <p class="text-gray-600 text-sm mb-4">
