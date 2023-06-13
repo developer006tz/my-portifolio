@@ -5,6 +5,7 @@ use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\DashboardController;
 use \App\Http\Controllers\Project;
 use \App\Http\Controllers\ProjectType;
+use \App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
