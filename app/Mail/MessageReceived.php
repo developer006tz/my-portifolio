@@ -14,27 +14,18 @@ class MessageReceived extends Mailable
 
     public $message;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
     public function __construct(Messages $message)
     {
         $this->message = $message;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
-        return $this->view('admin.components.admin-navbar')
-                    ->subject('New message received!')
-                    ->with([
-                        'message' => $this->message,
-                    ]);
+        return $this->from($this->message->email, $this->message->name)
+            ->view('admin.components.admin-navbar')
+            ->subject('New message received!')
+            ->with([
+                'message' => $this->message,
+            ]);
     }
 }

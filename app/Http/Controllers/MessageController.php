@@ -36,11 +36,7 @@ class MessageController extends Controller
         $message->message = $request->message;
         $message->save();
 
-        // Mail::to('developer@ludovickonyo.com')->send(new MessageReceived($message));
-
-        Mail::to('developer@ludovickonyo.com')
-            ->from($request->email)
-            ->send(new MessageReceived($message));
+        Mail::to('developer@ludovickonyo.com')->send(new MessageReceived($message));
 
 
 
