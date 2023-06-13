@@ -54,6 +54,15 @@
         </div>
       </div>
       <div class="w-full lg:w-1/2 xl:w-5/12 px-4">
+      @if(session()->has('success'))
+
+        <div class="bg-green-500 p-4 rounded-lg mb-6 text-white text-center">
+
+        {{session('success')}}
+
+        </div>
+
+        @endif
         <div class="bg-white dark:bg-slate-900 relative rounded-lg p-8 sm:p-12 shadow-lg">
           <form action="{{route('message.submit')}}" method="POST" >
             <template x-if="successMessage">

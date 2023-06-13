@@ -22,7 +22,7 @@ class MessageReceived extends Mailable
     public function build()
     {
         return $this->from($this->message->email, $this->message->name)
-            ->view('admin.components.admin-navbar')
+            ->view('admin.components.email')
             ->subject('New message received!')
             ->with([
                 'message' => $this->message,
