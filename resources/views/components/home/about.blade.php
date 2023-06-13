@@ -44,10 +44,10 @@
           </h2>
           <p class="text-base dark:text-gray-400 mb-8">
           Hi there, I’m Ludovick, a Software Developer who loves to create amazing web and
-           mobile applications. I have two years of experience in using cutting-edge technologies such as Laravel, CodeIgniter, Reactjs, Bootstrap, Tailwind, Django and Flutter.
+           mobile applications. I have two years of experience in using cutting-edge technologies such as Laravel, CodeIgniter, Reactjs, Bootstrap, Tailwind, Django and Flutter.</br>
 </br>
 Whether you need a school management software, a company website, or an event management system, I can build it for you with style and functionality.
-</br>
+</br><br>
 I can also design and develop mobile applications using Flutter that will delight your users. I have a solid grasp of advanced 
 database design and RBAC authorization, and I can work with MySQL and PostgreSQL seamlessly. I’m always on the lookout for new skills and technologies to learn and master.
           </p>
