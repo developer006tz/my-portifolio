@@ -18,16 +18,16 @@
         />
         <div class="p-6">
           <h2 class="text-lg font-semibold text-gray-800 mb-2">
-          Name: {{ $message->name }}
+          Name: {{ $msg->name }}
           </h2>
 
           <h3 class="text-lg font-semibold text-gray-800 mb-2">
-          Name: {{ $message->email }}
+          Name: {{ $msg->email }}
           </h3>
 
           
           <p class="text-gray-600 text-sm mb-4">
-          Message: {{ $message->message }}
+          Message: {{ $msg->message }}
           </p>
 
           <a

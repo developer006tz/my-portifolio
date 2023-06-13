@@ -12,7 +12,7 @@ class MessageReceived extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $message;
+    public $msg;
 
     /**
      * Create a new message instance.
@@ -21,7 +21,7 @@ class MessageReceived extends Mailable
      */
     public function __construct(Messages $message)
     {
-        $this->message = $message;
+        $this->msg = $message;
     }
 
     /**
@@ -34,7 +34,8 @@ class MessageReceived extends Mailable
         return $this->view('admin.components.email')
                     ->subject('New message received!')
                     ->with([
-                        'message' => $this->message,
+                        'msg' => $this->msg,
                     ]);
     }
+}
 }
