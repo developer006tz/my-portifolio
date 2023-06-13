@@ -11,7 +11,7 @@
             a <span class="rounded-md text-amber-600">Software Developer</span>.
           </h1>
           <p class="text-base mb-8 max-w-[520px]">
-          who can build complex and scalable web and mobile applications. I have experience in using Laravel, Reactjs, Flutter and other advanced technologies.
+          I can build complex and scalable web and mobile applications. I have experience in using Laravel, Reactjs, Flutter and other advanced technologies.
             <br/>I can create products such as company websites, school management systems, event management systems, and more.
              <br>
              I have a solid grasp of database design, RBAC authorization, and API development. You can check out my portfolio and contact me if you need my services. 😊
