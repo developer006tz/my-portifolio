@@ -1,11 +1,11 @@
 <!-- ====== Hero Section Start -->
 <div class="relative pt-[60px] lg:pt-[80px] pb-[110px] bg-white dark:bg-slate-800">
   <div class="container">
-  @if(session()->has('success'))
+  @if (session('successMessage'))
 
 <div class="bg-green-500 p-4 rounded-lg mb-6 text-white text-center">
 
-{{session('success')}}
+{{ session('successMessage') }}
 
 </div>
 
