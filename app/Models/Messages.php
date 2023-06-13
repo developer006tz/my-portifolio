@@ -13,6 +13,6 @@ class Messages extends Model
         'name',
         'email',
         'message',
-    ]
+    ];
 
 }
