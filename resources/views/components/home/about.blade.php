@@ -43,18 +43,27 @@
             About Me
           </h2>
           <p class="text-base dark:text-gray-400 mb-8">
-            I am a Software Engineer with a keen interest in web and mobile application development.<br />
-            I have experience in working with Laravel, CodeIgniter, Reactjs, Bootstrap, Tailwind, Django and Flutter. <br /><br /> I have
-            developed various web applications such as school-management-software's, company-websites and event management systems using these
-            technologies. I have also created mobile applications using Flutter. <br /><br />I have a good
-            understanding of advanced database design and RBAC authorization and can work well with MySQL and PostgreSQL. I am always eager to learn new skills and technologies.
+          Hi there, I’m Ludovick, a Software Developer who loves to create amazing web and
+           mobile applications. I have two years of experience in using cutting-edge technologies such as Laravel, CodeIgniter, Reactjs, Bootstrap, Tailwind, Django and Flutter.
+</br>
+Whether you need a school management software, a company website, or an event management system, I can build it for you with style and functionality.
+</br>
+I can also design and develop mobile applications using Flutter that will delight your users. I have a solid grasp of advanced 
+database design and RBAC authorization, and I can work with MySQL and PostgreSQL seamlessly. I’m always on the lookout for new skills and technologies to learn and master.
           </p>
           <p class="text-base dark:text-gray-400 mb-8">
-            Before embarking on my Developer journey, I was a Sketch artist < Drawer >.
-            I decided to merge my skills by learning Graphics design, which enables me to create amazing
-            <span class="text-amber-500 font-bold">Logos, Posters, Videos</span> and <span class="text-amber-500 font-bold">Fliers</span>. <br />
-            For you.<br />
+          But that’s not all. I’m also a former Sketch artist who can draw stunning portraits and landscapes. I decided to combine my artistic talent 
+          with my technical skills by learning Graphics design. Now I can create awesome <span class="text-amber-500 font-bold">Logos, Posters, Videos and Fliers </span>for you that will make your brand stand out.
+             <br />
+           <br />
+            I believe that the best way to learn is by building projects. 
+            That’s why I’m always working on something new and exciting. If you want to see some of my work, check out my portfolio.
           </p>
+
+          <p class="text-base dark:text-gray-400 mb-8">
+          If you think I’m the right person for your project, don’t hesitate to contact me. I’d love to hear from you and discuss how we can work together. Thank you for visiting my profile. Have a great day! 😊
+</p>
+
           <x-button-link href="https://github.com/developer006tz" variant="red" target="_blank">
             View my Works
           </x-button-link>
