@@ -43,3 +43,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', \App\Http\Controllers\AuthController::class);
 });
 
+Route::post('/submit-message', [MessageController::class, 'submit'])->name('message.submit');
+
