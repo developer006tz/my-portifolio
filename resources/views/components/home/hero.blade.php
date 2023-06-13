@@ -1,15 +1,7 @@
 <!-- ====== Hero Section Start -->
 <div class="relative pt-[60px] lg:pt-[80px] pb-[110px] bg-white dark:bg-slate-800">
   <div class="container">
-  @if (session('successMessage'))
-
-<div class="bg-green-500 p-4 rounded-lg mb-6 text-white text-center">
-
-{{ session('successMessage') }}
-
-</div>
-
-@endif
+ 
     <div class="flex flex-wrap -mx-4">
       <div class="w-full lg:w-5/12 px-4">
         <div class="hero-content">

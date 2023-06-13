@@ -56,6 +56,15 @@
       <div class="w-full lg:w-1/2 xl:w-5/12 px-4">
       
         <div class="bg-white dark:bg-slate-900 relative rounded-lg p-8 sm:p-12 shadow-lg">
+        @if (session('successMessage'))
+
+<div class="bg-green-500 p-4 rounded-lg mb-6 text-white text-center">
+
+{{ session('successMessage') }}
+
+</div>
+
+@endif
           <form action="{{route('message.submit')}}" method="POST" >
             <template x-if="successMessage">
               <div x-text="successMessage" class="py-4 px-6 bg-green-600 text-gray-100 mb-4"></div>
